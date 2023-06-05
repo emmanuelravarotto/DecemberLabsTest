@@ -13,7 +13,7 @@ public class DecemberLabsPage {
     private WebElement austinLink;
 
     @FindBy(xpath = "//nav//ul[@class='content_navigation']//ul//a[text()='Services']")
-    private WebElement serviciosMenuLink;
+    private WebElement servicesMenuLink;
 
 
     public DecemberLabsPage(WebDriver driver) {
@@ -25,7 +25,7 @@ public class DecemberLabsPage {
         driver.get("https://inhouse.decemberlabs.com/");
     }
     public boolean validateDecemberLabsPage() {
-        return pageTitle.isDisplayed() && serviciosMenuLink.isDisplayed();
+        return pageTitle.isDisplayed() && servicesMenuLink.isDisplayed();
     }
 
     public void navigateToAustinPage() {

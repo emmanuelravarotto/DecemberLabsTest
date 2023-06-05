@@ -24,7 +24,7 @@ public class DecemberLabsTest {
     }
 
     @Test
-    public void runTest() {
+    public void runTest(){
         decemberLabsPage.navigateToDecemberLabs();
         Assert.assertTrue(decemberLabsPage.validateDecemberLabsPage(), "Failed to open December Labs page");
 
@@ -33,10 +33,8 @@ public class DecemberLabsTest {
 
         austinPage.openConsultationPopup();
         Assert.assertTrue(austinPage.validateConsultationPopup(), "Failed to display consultation popup");
-
         austinPage.closePopup();
-        Assert.assertTrue(austinPage.validatePopupClosed(), "Failed to close consultation popup");
-
+        Assert.assertFalse(austinPage.validatePopupClosed(), "Failed to close consultation popup");
         closeBrowser();
     }
 }

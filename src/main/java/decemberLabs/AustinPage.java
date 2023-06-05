@@ -18,7 +18,10 @@ public class AustinPage {
     @FindBy(xpath = "//div[@class='left']//a[text()='Schedule free consultation']")
     private WebElement scheduleConsultationButton;
 
-    @FindBy(xpath = "//div[@class='js-calendar-selector']")
+    @FindBy(xpath = "//div[@class='dl-modal calendar-modal open']//div[@class='btn-close-modal']")
+    private WebElement btnClose;
+
+    @FindBy(xpath = "//div[@class='start-project-form content_form']//iframe")
     private WebElement popup;
 
     public AustinPage(WebDriver driver) {
@@ -45,13 +48,13 @@ public class AustinPage {
     }
 
     public void closePopup() {
-        driver.switchTo().frame("calendly-popup-widget");
-        driver.findElement(By.xpath("//div[@class='dl-modal calendar-modal open']//div[@class='btn-close-modal']")).click();
-        driver.switchTo().defaultContent();
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(btnClose));
+        btn.click();
     }
-
     public boolean validatePopupClosed() {
         return !popup.isDisplayed();
     }
+
 }
 
